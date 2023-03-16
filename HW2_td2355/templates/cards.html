@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Authors</title>
+    <style type="text/css">
+        :root {
+            --primary-color: #e8c9af;
+            --secondary-color: #b0a3a0;
+            --tertiary-color: #ffffff;
+            --card-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+        }
+        body {
+            background-color: var(--tertiary-color);
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: flex-start;
+            text-align: center;
+        }
+        .card {
+            height: 15em;
+            width: 20em;
+            background-color: var(--primary-color);
+            margin: 3em;
+            padding: 1em;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+            box-shadow: var(--card-shadow);
+        }
+        .card img {
+            height: 8em;
+            width: 8em;
+            border-radius: 50%;
+            margin-bottom: 1em;
+        }
+        .title {
+            font-size: 1.5em;
+            margin-bottom: 0.5em;
+            color: var(--tertiary-color);
+        }
+        .btn {
+            background-color: var(--tertiary-color);
+            border: none;
+            color: var(--primary-color);
+            padding: 0.5em 1em;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 1em;
+            margin-top: 0.5em;
+            transition: background-color 0.3s ease-in-out;
+            border-radius: 10px;
+            box-shadow: var(--card-shadow);
+        }
+        .btn:hover {
+            background-color: var(--secondary-color);
+            color: var(--tertiary-color);
+        }
+        @media (max-width: 768px) {
+            .card {
+                height: 12em;
+                width: 15em;
+                margin: 1em;
+            }
+            .card img {
+                height: 6em;
+                width: 6em;
+            }
+        }
+        @media (max-width: 576px) {
+            .card {
+                height: 10em;
+                width: 12em;
+                margin: 1em;
+                padding: 0.5em;
+            }
+            .card img {
+                height: 5em;
+                width: 5em;
+            }
+            .title {
+                font-size: 1.2em;
+                margin-bottom: 0.5em;
+            }
+            .btn {
+                font-size: 0.8em;
+                margin-top: 0.5em;
+            }
+        }
+        header {
+            background-color: rgb(23, 54, 80);
+            color: var(--tertiary-color);
+            text-align: center;
+            padding: 2em;
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 2em;
+        }
+    </style>
+</head>
+<body>
+<header>AUTHORS</header>
+<div class="cards">
+    {% for list in result %}
+    <div class="card">
+        {% if list=='J.K. Rowling' %}
+        <img src="https://covers.openlibrary.org/a/id/5543033-M.jpg" style="border-radius: 50%">
+        {% elif list=='Stephen King' %}
+        <img src="https://covers.openlibrary.org/a/id/7127409-M.jpg" style="border-radius: 50%">
+        {% else %}
+        <img src="https://covers.openlibrary.org/a/id/6275915-M.jpg" style="border-radius: 50%">
+        {% endif %}
+        <div class="title">{{ list }}</div>
+        <a target="_blank" rel="noopener noreferrer" href="/author?name={{ list }}" class="btn">Details</a>
+    </div><!--/card-->
+    {% endfor %}
+</div>
+</body>
+</html>

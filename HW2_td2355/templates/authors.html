@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <title>Details</title>
+    <style type="text/css">
+        body {
+            font-family: sans-serif;
+            background-color: #e8c9af;
+            color: #4d4d4d;
+            margin: 0;
+            padding: 4em;
+        }
+
+        h2 {
+            font-size: 36pt;
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        h3{
+            font-size: 24pt;
+            margin-top: 30px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 18pt;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        li {
+            font-size: 16pt;
+            padding: 10px 20px;
+            margin: 10px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+            transition: all 0.2s ease-in-out;
+            text-align: center;
+            width: 300px;
+            position: relative;
+        }
+
+        li:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 7px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        a {
+            color: #4d4d4d;
+            text-decoration: none;
+        }
+
+        .amazon-link:hover {
+            background-color: rgba(23, 54, 80, 0.3);
+        }
+
+        .amazon-link:before i {
+            margin-left: 5px;
+        }
+
+
+        @media screen and (max-width: 768px) {
+            h2 {
+                font-size: 24pt;
+            }
+
+            h3 {
+                font-size: 20pt;
+            }
+
+            p {
+                font-size: 16pt;
+            }
+
+            li {
+                font-size: 14pt;
+                width: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+<h2>{{ result['author']['author'] }}</h2>
+<p>{{ result['author']['bio'] }}</p>
+<h3 style="text-align: center">Works</h3>
+<ul>
+    {% for book in result['links'] %}
+    {% if book['amazon']=="" or book['amazon']==null %}
+    <li>{{ book['book'] }}</li>
+    {% else %}
+    <li class="amazon-link"><a target="_blank" href="https://www.amazon.com/dp/{{ book['amazon'] }}">{{ book['book'] }}<i class="fa fa-external-link" aria-hidden="true"></i></a></li>
+    {% endif %}
+    {% endfor %}
+</ul>
+</body>
+</html>
