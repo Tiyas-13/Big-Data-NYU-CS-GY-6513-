@@ -1,0 +1,29 @@
+Assignment 2: MongoDB and Flask
+
+ 
+
+Objective: to demonstrate how we can create a simple yet usable data product using MongoDB and data from different data sources.
+
+Steps:
+
+Using the books.csv file: 
+Clean date data rows (6/31 and 11/31)
+Create MongoDB db and collection
+Create/insert documents from file to db
+Remember: some books have multiple authors. What’s the best way to handle this with JSON? Should we preprocess the data in Python? If so, how?
+Consider: Given the data product we’re looking to make? Does it make sense to store the data in an author-centric fashion or book-centric? Or both? Remember that in document DBs, avoiding duplicate data isn’t as important as in a relational model…
+Using OpenLibrary API…
+All queries and searches from this point forward must be in MongoDB
+Conduct a search in your MongoDB instance for the following 3 authors:
+JK Rowling
+Stephen King
+Gabriel Garcia Marquez
+Using each author name, conduct a search on https://openlibrary.org for the author’s JSON document:
+To find author (example: https://openlibrary.org/search/authors.json?q=firstname%20lastname
+In the resulting doc(s), find your author’s key
+Use that key (for example: OL123456) to find their works and bio info: https://openlibrary.org/authors/OL123456.json
+Add this information to their existing document(s) in your MongoDB database/collection.
+Using Python Flask, create:
+A simple home page with 3 links, one for each author’s bio page
+a single, simple bio page for each author with biographical information as well as links to each of their books on Amazon (if Amazon ID exists)
+Consider: do you need a hard-coded HTML file for each author, or can you leverage Flask and GET or POST requests?
